@@ -1,4 +1,4 @@
-#include "main.h"
+#include "simple_shell.h"
 
 /* Fonction pour afficher les erreurs */
 void handle_error(char *command)
