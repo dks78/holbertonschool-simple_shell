@@ -10,6 +10,4 @@
 /* Prototypes des fonctions */
 
 
-void execute_command(char *command);
-
 #endif /* MAIN_H */
