@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <errno.h>
 
 #define MAX_INPUT_SIZE 1024
 
@@ -16,11 +15,13 @@
 int main(void)
 {
     char *command = NULL;
-    char *argv[2];  /* Déclaration du tableau d'arguments pour une commande simple */
     size_t len = 0;
     ssize_t nread;
     pid_t pid;
     int status;
+    char **argv;  /* Déclaration de argv */
+    char *token;  /* Déclaration de token */
+    int i;  /* Déclaration de i */
 
     while (1)
     {
@@ -54,24 +55,41 @@ int main(void)
             continue;
         }
 
-        /* Initialiser le tableau argv après avoir récupéré la commande */
-        argv[0] = command;
-        argv[1] = NULL;  /* Terminer le tableau avec NULL */
+        /* Allocation dynamique pour argv */
+        argv = malloc(sizeof(char *) * (MAX_INPUT_SIZE / 2 + 1));  /* Allocation dynamique */
+        if (argv == NULL)
+        {
+            perror("malloc");
+            exit(1);
+        }
+
+        /* Découper la commande en arguments */
+        i = 0;
+        token = strtok(command, " ");  /* Diviser la chaîne par des espaces */
+        while (token != NULL)
+        {
+            argv[i] = token;  /* Ajouter l'argument au tableau */
+            i++;
+            token = strtok(NULL, " ");  /* Obtenir le prochain argument */
+        }
+        argv[i] = NULL;  /* Terminer le tableau avec NULL */
 
         /* Création d'un processus enfant pour exécuter la commande */
         pid = fork();
         if (pid == -1)  /* Erreur de fork */
         {
             perror("fork");
+            free(argv);
             exit(1);
         }
 
         if (pid == 0)  /* Code pour le processus enfant */
         {
             /* Exécution de la commande avec execve */
-            if (execve(command, argv, NULL) == -1)
+            if (execve(argv[0], argv, NULL) == -1)
             {
                 perror("./hsh");
+                free(argv);
                 exit(1);
             }
         }
@@ -80,6 +98,9 @@ int main(void)
             /* Attendre la fin du processus enfant */
             wait(&status);
         }
+
+        /* Libérer la mémoire allouée pour argv */
+        free(argv);
     }
 
     /* Libérer la mémoire allouée pour la commande */
