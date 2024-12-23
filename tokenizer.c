@@ -1,24 +1,45 @@
+#include "simple_shell.h"
 
-#include "simple_shell.h" 
-
-char **tokenize_command(char *command)
+/**
+ * tokenizer - tokenizes string
+ * @str: user input
+ * Return: pointer to array of tokens
+ */
+char **tokenizer(char *str)
 {
-    char **argv;
+    char **tokens;
     char *token;
-    int i = 0;
+    unsigned int i;
 
-    argv = malloc(sizeof(char *) * (MAX_INPUT_SIZE / 2 + 1));
-    if (argv == NULL) {
-        perror("malloc");
-        return NULL;
+    if (str == NULL)
+    {
+        fprintf(stderr, "Error: Null input string\n");
+        return (NULL);
     }
 
-    token = strtok(command, " ");
-    while (token != NULL) {
-        argv[i] = token;
+    tokens = malloc(sizeof(char *) * BUFFER);
+    if (tokens == NULL)
+    {
+        perror("Malloc failed");
+        exit(EXIT_FAILURE);
+    }
+
+    token = strtok(str, "\n\t\r ");
+    i = 0;
+
+    while (token != NULL)
+    {
+        if (i >= BUFFER - 1)
+        {
+            fprintf(stderr, "Error: Too many tokens\n");
+            free(tokens);
+            return (NULL);
+        }
+        tokens[i] = token;
+        token = strtok(NULL, "\n\t\r ");
         i++;
-        token = strtok(NULL, " ");
     }
-    argv[i] = NULL;
-    return argv;
+
+    tokens[i] = NULL;
+    return (tokens);
 }
