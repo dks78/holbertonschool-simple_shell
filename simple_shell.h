@@ -50,4 +50,5 @@ char **tokenizer(char *str);
 void prompt(int fd, struct stat buf);
 void _puts(char *str);
 unsigned int _strlen(char *str);
+char *get_command_path(char *cmd, char **env);
 #endif
