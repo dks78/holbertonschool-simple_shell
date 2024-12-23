@@ -7,39 +7,28 @@
  */
 char **tokenizer(char *str)
 {
-    char **tokens;
-    char *token;
-    unsigned int i;
+	char **tokens;
+	char *token;
+	unsigned int i;
 
-    if (str == NULL)
-    {
-        fprintf(stderr, "Error: Null input string\n");
-        return (NULL);
-    }
+	tokens = malloc(sizeof(char) * BUFFER);
+	if (tokens == NULL)
+	{
+		errors(3);
+		exit(EXIT_FAILURE);
+	}
 
-    tokens = malloc(sizeof(char *) * BUFFER);
-    if (tokens == NULL)
-    {
-        perror("Malloc failed");
-        exit(EXIT_FAILURE);
-    }
+	token = strtok(str, "\n\t\r ");
 
-    token = strtok(str, "\n\t\r ");
-    i = 0;
+	i = 0;
+	while (token != NULL)
+	{
+		tokens[i] = token;
+		token = strtok(NULL, "\n\t\r ");
+		i++;
+	}
 
-    while (token != NULL)
-    {
-        if (i >= BUFFER - 1)
-        {
-            fprintf(stderr, "Error: Too many tokens\n");
-            free(tokens);
-            return (NULL);
-        }
-        tokens[i] = token;
-        token = strtok(NULL, "\n\t\r ");
-        i++;
-    }
+	tokens[i] = NULL;
 
-    tokens[i] = NULL;
-    return (tokens);
+	return (tokens);
 }
