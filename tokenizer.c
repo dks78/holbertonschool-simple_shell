@@ -5,7 +5,8 @@
  * @str: user input
  * Return: pointer to array of tokens
  */
-char **tokenizer(char *str)
+char **tokenizer(char *str)/*Cette fonctionsert à découper une chaîne de caractères (str) en plusieurs "tokens" 
+*/
 {
 	char **tokens;
 	char *token;

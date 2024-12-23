@@ -5,7 +5,7 @@
  * @fd: file stream
  * @buf: buffer
 **/
-void prompt(int fd, struct stat buf)
+void prompt(int fd, struct stat buf) /*ce code sert a affiché le pronmpt a l'utilsateur ! pour lui indiqué d'entrer une commande */
 {
 	fstat(fd, &buf);
 
