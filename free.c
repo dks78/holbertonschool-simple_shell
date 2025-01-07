@@ -9,7 +9,7 @@
  * Return: void
  */
 void free_all(char **tokens, char *path, char *line, char *fullpath, int flag)
-{
+{/*ce sont les fonction pour alloué les mémoir */
 	free(path);
 	free(tokens);
 	free(line);

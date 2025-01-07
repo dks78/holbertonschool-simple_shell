@@ -5,14 +5,13 @@
  * @fd: file stream
  * @buf: buffer
 **/
-void prompt(int fd, struct stat buf) /*ce code sert a affiché le pronmpt a l'utilsateur ! pour lui indiqué d'entrer une commande */
+void prompt(int fd, struct stat buf) /*ce code sert a affiché le pronmpt a*/
 {
 	fstat(fd, &buf);
 
 	if (S_ISCHR(buf.st_mode))
 		_puts(PROMPT);
 }
-
 /**
  * _puts - prints a string without a \n
  * @str: string to print
