@@ -1,13 +1,32 @@
 #include "simple_shell.h"
+/*La gestion des variables d'environnement
+Le traitement des options et arguments
+La gestion des erreurs
+C'est comme si ces fonctions donnaient à votre shell :
 
+Les "yeux" pour lire les commandes
+Le "cerveau" pour les comprendre
+La capacité de "décider" comment les traiter
+Voulez-vous que je vous explique ces autres utilisations en détail ?
+*/
+/*c'est fonction sont crusial pour le shell*/ 
+/*elle serviront au terminale pour les commande cd/fil/ectt , reconnaitre les commande intégrer , sans c'est commande*/
+
+
+
+
+
+/*le shell ne reconnaitra pas les commande comme cd exit ect */
 /**
- * _strcmp - compares two strings to find out if they are exactly the same
+ * _strcmp - compare 2 chaine de charactéres
  * @name: name supplied by user to search for
  * @variable: variable to compare against
  * @length: length of name
  * Return: 1 if strings are equal, -1 if they are not
  */
+
 int _strcmp(char *name, char *variable, unsigned int length)
+
 {
 	unsigned int var_length;
 	unsigned int i;
@@ -27,8 +46,7 @@ int _strcmp(char *name, char *variable, unsigned int length)
 }
 
 /**
- * _strncmp - compares two strings
- * up to given length are the same
+ * _strncmp - comapares les premier charactére d'une chaine
  * @name: name supplied by user to search for
  * @variable: variable to compare against
  * @length: length to compare up to
@@ -55,6 +73,12 @@ int _strncmp(char *name, char *variable, unsigned int length)
  * Return: the pointer to dest
  */
 char *_strcpy(char *dest, char *src)
+/*C'est utile dans votre shell pour :
+Copier des commandes
+Dupliquer des chemins
+Sauvegarder temporairement des chaînes
+Manipuler des variables d'environnement
+*/
 {
 	int i;
 	int j = _strlen(src);
@@ -70,6 +94,13 @@ char *_strcpy(char *dest, char *src)
  * Return: length of string
  */
 int _strlen(char *s)
+
+/*
+Vérifier la taille des commandes
+Allouer la bonne quantité de mémoire
+Comparer les longueurs des chaînes
+Valider les entrées utilisateur
+*/
 {
 	int i = 0;
 
