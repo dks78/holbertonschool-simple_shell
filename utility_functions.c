@@ -6,20 +6,13 @@ C'est comme si ces fonctions donnaient à votre shell :
 
 Les "yeux" pour lire les commandes
 Le "cerveau" pour les comprendre
-La capacité de "décider" comment les traiter
-Voulez-vous que je vous explique ces autres utilisations en détail ?
-*/
+La capacité de "décider" comment les traiter*/
 /*c'est fonction sont crusial pour le shell*/ 
 /*elle serviront au terminale pour les commande cd/fil/ectt , reconnaitre les commande intégrer , sans c'est commande*/
-
-
-
-
-
 /*le shell ne reconnaitra pas les commande comme cd exit ect */
 /**
  * _strcmp - compare 2 chaine de charactéres
- * @name: name supplied by user to search for
+ * @name: name supplied by user to search fo
  * @variable: variable to compare against
  * @length: length of name
  * Return: 1 if strings are equal, -1 if they are not

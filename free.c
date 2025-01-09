@@ -14,7 +14,7 @@ void free_all(char **tokens, char *path, char *line, char *fullpath, int flag)
 	free(tokens);
 	free(line);
 	if (flag == 1)
-		free(fullpath);
+	free(fullpath);
 }
 
 /**
