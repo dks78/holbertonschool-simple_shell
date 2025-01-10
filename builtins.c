@@ -14,7 +14,7 @@
 **shell_env - prints environment
 **Return: void
 **/
-
+	/*ici on gére les envirnement et aussi pour quitter le shell */
 	int shell_env(void)
 	{
 		unsigned int i;
