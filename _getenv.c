@@ -4,6 +4,7 @@
  * @name: environment variable to get
  * Return: pointer to environment variable or NULL if there is no match
  */
+/* cette variable va gérer ducpup les chemins dans le shell */
 char *_getenv(const char *name)
 {
 	char **environ_copy;
@@ -14,16 +15,19 @@ char *_getenv(const char *name)
 	environ_length = 0;
 	while (environ[environ_length] != NULL)
 		environ_length++;
-	environ_copy = NULL;
+	environ_copy = NULL; /*on initialise une variable NULL pour copier avec la fonction copy_env() pour copier chaque chaine de 
+    charactére de environs  */
 	environ_copy = copy_env(environ_copy, environ_length);
 
-	length = _strlen((char *)name);
+	length = _strlen((char *)name);/*calcule la longeur e la chaine NAME*/
 	i = 0;
-	while (environ_copy[i] != NULL)
+	while (environ_copy[i] != NULL) /*parcourir chaque chaine de charactére dans while (environ_copy[i] != NULL)  */
 	{
 		variable = environ_copy[i];
-		compare = _strncmp((char *)name, variable, length);
-		if (compare == 1)
+		compare = _strncmp((char *)name, variable, length); /*ici compare et définie pour compare les chaine de charactére name , variable
+        et lenght*/
+
+		if (compare == 1) 
 		{
 			value = strtok(variable, "=");
 			value = strtok(NULL, "\n ");
@@ -32,15 +36,17 @@ char *_getenv(const char *name)
 				errors(4);
 				exit(EXIT_FAILURE);
 			}
-			path_length = _strlen(value);
+
+			path_length = _strlen(value);/*sotcker la longeur de la variable value et la sotcker dans path_lenght*/
 			path = malloc(sizeof(char) * path_length + 1);
 			if (path == NULL)
 			{
 				errors(3);
 				return (NULL);
 			}
-			path = _strcpy(path, value);
-			free_dp(environ_copy, environ_length);
+			path = _strcpy(path, value);/*ensuite on copy path et value dans path*/
+			free_dp(environ_copy, environ_length);/*libére la mémoire
+            */
 			return (path);
 		}
 		i++;
