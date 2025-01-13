@@ -19,21 +19,24 @@ La capacité de "décider" comment les traiter*/
  */
 
 int _strcmp(char *name, char *variable, unsigned int length)
+
 {
-    while (*name && *variable && length--)
-    {
-        if (*name != *variable)
-        {
-            return (*name - *variable);
-        }
-        name++;
-        variable++;
-    }
+	unsigned int var_length;
+	unsigned int i;
 
-    return (*name - *variable);
+	var_length = _strlen(variable);
+	if (var_length != length)
+		return (-1);
+
+	i = 0;
+	while (name[i] != '\0' && variable[i] != '\0')
+	{
+		if (name[i] != variable[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }
-
-
 
 /**
  * _strncmp - comapares les premier charactére d'une chaine
@@ -55,38 +58,36 @@ int _strncmp(char *name, char *variable, unsigned int length)
 	}
 	return (1);
 }
+
 /**
  * *_strcpy - copies string pointed to by src to the buffer pointed to dest
  * @dest: string destination
  * @src: string source
  * Return: the pointer to dest
  */
+char *_strcpy(char *dest, char *src)
 /*C'est utile dans votre shell pour :
 Copier des commandes
 Dupliquer des chemins
 Sauvegarder temporairement des chaînes
 Manipuler des variables d'environnement
 */
-char *_strcpy(char *dest, char *src)
 {
-   int i;
+	int i;
+	int j = _strlen(src);
 
+	for (i = 0; i <= j; i++)
+		dest[i] = src[i];
 
-    for (i = 0; src[i] != '\0'; i++) {
-    dest[i] = src[i];
+	return (dest);
 }
-    dest[i] = '\0';
-
-    return dest;
-}
-
 /**
  * _strlen - returns the length of a string
  * @s: string to be evaluated
  * Return: length of string
  */
-
 int _strlen(char *s)
+
 /*
 Vérifier la taille des commandes
 Allouer la bonne quantité de mémoire
@@ -94,12 +95,10 @@ Comparer les longueurs des chaînes
 Valider les entrées utilisateur
 */
 {
+	int i = 0;
 
-    int len = 0;
+	while (s[i] != '\0')
+		i++;
 
-    while (s[len] != '\0')
-    {
-        len++;
-    }
-    return (len);
+	return (i);
 }
