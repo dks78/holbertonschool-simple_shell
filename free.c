@@ -1,4 +1,5 @@
 #include "simple_shell.h"
+
 /**
  * free_all - frees all malloc'd space at end of main loop
  * @tokens: pointer to tokens array
@@ -9,12 +10,12 @@
  * Return: void
  */
 void free_all(char **tokens, char *path, char *line, char *fullpath, int flag)
-{/*ce sont les fonction pour alloué les mémoir */
+{
 	free(path);
 	free(tokens);
 	free(line);
 	if (flag == 1)
-	free(fullpath);
+		free(fullpath);
 }
 
 /**
@@ -35,4 +36,3 @@ void free_dp(char **array, unsigned int length)
 	}
 	free(array);
 }
-
