@@ -1,10 +1,6 @@
 #include "simple_shell.h"
 
-/**
- * tokenizer - tokenizes string
- * @str: user input
- * Return: pointer to array of tokens
- */
+
 char **tokenizer(char *str)/*Cette fonctionsert à découper une chaîne de caractères (str) en plusieurs "tokens" 
 */
 /*cette fonction va permetre au shell de comprendre les commande comme ls -l ect */
@@ -19,7 +15,6 @@ char **tokenizer(char *str)/*Cette fonctionsert à découper une chaîne de cara
 		errors(3);
 		exit(EXIT_FAILURE);
 	}
-
 
 	token = strtok(str, "\n\t\r ");/*les chaine de charactére decoupé*/
 	/*seront stocké dans toke, */

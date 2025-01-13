@@ -4,6 +4,20 @@
 Ghost Shell, également connu sous le nom de "shell", est une interface en ligne de commande simple qui exécute les commandes les plus basiques présentes dans le shell bash.  
 *Ghost Shell, also known as the "shell", is a simple command-line interface that executes the most basic commands found in the bash shell.*  
 
+
+Le shell comporte des processus de sortie , descripteurs de fichiers , ainsi que les appels système.Au démarrage du systéme, trois flux de données sont ouverts:
+
+
+stdin : stdin est le flux d'entrée standard dans un programme, généralement associé au clavier , Il permet de lire les entrées de l'utilisateur ou d'un fichier (lorsque redirigé).( ce que l'utilisateur , va entrer au clavier )
+
+stdout : stdout est le flux de sortie standard, généralement associé à l'écran (la console). Il permet d'envoyer des données à la sortie standard. ( exemple , si j'entre
+al commande ls , ca sera se fichier qui sera utilisé pour entrer affiche la commande ls )
+
+stderr : stderr est le flux d'erreur standard, utilisé pour afficher les messages d'erreur.
+
+
+
+
 Ce shell a été développé comme projet pour l'école Holberton.  
 *This shell was developed as a project for Holberton School.*  
 

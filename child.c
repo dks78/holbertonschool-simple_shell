@@ -6,7 +6,7 @@
  * @tokens: tokenized user input
  * Return: 0 on success
  */
-	/*cela sert a exécute un proccesus enfant */
+/*cela sert a exécute un proccesus enfant */
 int child(char *fullpath, char **tokens)
 {
 	pid_t child_pid;

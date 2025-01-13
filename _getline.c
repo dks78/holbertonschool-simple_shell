@@ -4,6 +4,7 @@
  * @fp: buffer for user input
  * Return: buffer with user input
  */
+ /* permet au shell de comprendre l'unput */
 char *_getline(FILE *fp)
 {
 	char *line;
